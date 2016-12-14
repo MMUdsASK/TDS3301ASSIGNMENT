@@ -1,0 +1,19 @@
+Exploratory Data Analysis
+
+Obtain a dataset that you can:
+
+Understand what the dataset is
+What domain the dataset relates to, such as Medicine, Traffic, etc.
+The URL where the dataset can be downloaded
+
+Place the dataset and your description of it in a new folder here in PART1 folder
+
+The folder should consist of:
+
+The dataset itself
+A textfile describing the dataset, the domain and the URL
+
+
+
+Once we get some datasets in the folder, we can proceed with picking a dataset
+to complete the assignment 1
