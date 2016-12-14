@@ -5,6 +5,6 @@ TEAM MEMBERS READ THIS :
 
 Install github desktop
 
-when adding a repository, clone this repo with this link:
+Select the add repository button, click on the clone tab, and paste in the link below:
 
 https://github.com/MMUdsASK/TDS3301ASSIGNMENT.git
