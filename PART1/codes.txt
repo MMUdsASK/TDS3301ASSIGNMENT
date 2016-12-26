@@ -1,0 +1,7 @@
+plot( x = dataset$instant, y = dataset$weathersit)
+
+plot( x = dataset$casual, y = dataset$weathersit)
+
+plot( x = dataset$registered, y = dataset$weathersit)
+
+plot( x = dataset$cnt, y = dataset$weathersit)
