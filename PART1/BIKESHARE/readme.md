@@ -18,5 +18,5 @@ Urban transportation, related to bike-sharing
 
 https://archive.ics.uci.edu/ml/datasets/Bike+Sharing+Dataset
 
-The readme.txt details the dataset in greater detail, from the original source.
+The readme.txt explains the dataset in greater detail, from the original source.
 
