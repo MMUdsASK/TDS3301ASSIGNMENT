@@ -15,6 +15,7 @@ shinyUI(fluidPage(
     selectInput("selection", label = h3("Visualization options"), 
                 choices = list("Weather situation over time" = 1, "TODO" = 2,
                                "TODO" = 3), selected = 1),
+    htmlOutput("TEXTOUT"),
     hr(),
     helpText("Data from Fanaee-T, Hadi and Gama, Joao ( 2013 ), Event labeling combining ensemble detectors and background knowledge")
     ),
