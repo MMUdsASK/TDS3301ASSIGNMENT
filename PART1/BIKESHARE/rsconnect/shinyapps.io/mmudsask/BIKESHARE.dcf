@@ -1,0 +1,11 @@
+name: BIKESHARE
+title: BIKESHARE
+account: mmudsask
+server: shinyapps.io
+appId: 147561
+bundleId: 663128
+url: https://mmudsask.shinyapps.io/bikeshare/
+when: 1482968276.41137
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: (Year and Season)Day.txt|.RData|preprocess.R|readme.md|Readme.txt|SHINY/showcase.r
