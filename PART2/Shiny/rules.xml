@@ -1,0 +1,499 @@
+<?xml version="1.0"?>
+<PMML version="4.1" xmlns="http://www.dmg.org/PMML-4_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.dmg.org/PMML-4_1 http://www.dmg.org/v4-1/pmml-4-1.xsd">
+ <Header copyright="Copyright (c) 2017 Salamanth" description="arules association rules model">
+  <Extension name="user" value="Salamanth" extender="Rattle/PMML"/>
+  <Application name="Rattle/PMML" version="1.4"/>
+  <Timestamp>2017-01-12 20:57:33</Timestamp>
+ </Header>
+ <DataDictionary numberOfFields="2">
+  <DataField name="transaction" optype="categorical" dataType="string"/>
+  <DataField name="item" optype="categorical" dataType="string"/>
+ </DataDictionary>
+ <AssociationModel functionName="associationRules" numberOfTransactions="1000" numberOfItems="50" minimumSupport="0.005" minimumConfidence="0.8" numberOfItemsets="86" numberOfRules="88">
+  <MiningSchema>
+   <MiningField name="transaction" usageType="group"/>
+   <MiningField name="item" usageType="active"/>
+  </MiningSchema>
+  <Item id="1" value="Chocolate Cake"/>
+  <Item id="2" value="Lemon Cake"/>
+  <Item id="3" value="Casino Cake"/>
+  <Item id="4" value="Opera Cake"/>
+  <Item id="5" value="Strawberry Cake"/>
+  <Item id="6" value="Truffle Cake"/>
+  <Item id="7" value="Chocolate Eclair"/>
+  <Item id="8" value="Coffee Eclair"/>
+  <Item id="9" value="Vanilla Eclair"/>
+  <Item id="10" value="Napoleon Cake"/>
+  <Item id="11" value="Almond Tart"/>
+  <Item id="12" value="Apple Pie"/>
+  <Item id="13" value="Apple Tart"/>
+  <Item id="14" value="Apricot Tart"/>
+  <Item id="15" value="Berry Tart"/>
+  <Item id="16" value="Blackberry Tart"/>
+  <Item id="17" value="Blueberry Tart"/>
+  <Item id="18" value="Chocolate Tart"/>
+  <Item id="19" value="Cherry Tart"/>
+  <Item id="20" value="Lemon Tart"/>
+  <Item id="21" value="Pecan Tart"/>
+  <Item id="22" value="Ganache Cookie"/>
+  <Item id="23" value="Gongolais Cookie"/>
+  <Item id="24" value="Raspberry Cookie"/>
+  <Item id="25" value="Lemon Cookie"/>
+  <Item id="26" value="Chocolate Meringue"/>
+  <Item id="27" value="Vanilla Meringue"/>
+  <Item id="28" value="Marzipan Cookie"/>
+  <Item id="29" value="Tuile Cookie"/>
+  <Item id="30" value="Walnut Cookie"/>
+  <Item id="31" value="Almond Croissant"/>
+  <Item id="32" value="Apple Croissant"/>
+  <Item id="33" value="Apricot Croissant"/>
+  <Item id="34" value="Cheese Croissant"/>
+  <Item id="35" value="Chocolate Croissant"/>
+  <Item id="36" value="Apricot Danish"/>
+  <Item id="37" value="Apple Danish"/>
+  <Item id="38" value="Almond Twist"/>
+  <Item id="39" value="Almond Bear Claw"/>
+  <Item id="40" value="Blueberry Danish"/>
+  <Item id="41" value="Lemon Lemonade"/>
+  <Item id="42" value="Raspberry Lemonade"/>
+  <Item id="43" value="Orange Juice"/>
+  <Item id="44" value="Green Tea"/>
+  <Item id="45" value="Bottled Water"/>
+  <Item id="46" value="Hot Coffee"/>
+  <Item id="47" value="Chocolate Coffee"/>
+  <Item id="48" value="Vanilla Frappuccino"/>
+  <Item id="49" value="Cherry Soda"/>
+  <Item id="50" value="Single Espresso"/>
+  <Itemset id="1" numberOfItems="2">
+   <ItemRef itemRef="13"/>
+   <ItemRef itemRef="37"/>
+  </Itemset>
+  <Itemset id="2" numberOfItems="2">
+   <ItemRef itemRef="13"/>
+   <ItemRef itemRef="32"/>
+  </Itemset>
+  <Itemset id="3" numberOfItems="2">
+   <ItemRef itemRef="32"/>
+   <ItemRef itemRef="37"/>
+  </Itemset>
+  <Itemset id="4" numberOfItems="2">
+   <ItemRef itemRef="1"/>
+   <ItemRef itemRef="3"/>
+  </Itemset>
+  <Itemset id="5" numberOfItems="2">
+   <ItemRef itemRef="3"/>
+   <ItemRef itemRef="47"/>
+  </Itemset>
+  <Itemset id="6" numberOfItems="2">
+   <ItemRef itemRef="1"/>
+   <ItemRef itemRef="47"/>
+  </Itemset>
+  <Itemset id="7" numberOfItems="2">
+   <ItemRef itemRef="4"/>
+   <ItemRef itemRef="36"/>
+  </Itemset>
+  <Itemset id="8" numberOfItems="2">
+   <ItemRef itemRef="4"/>
+   <ItemRef itemRef="19"/>
+  </Itemset>
+  <Itemset id="9" numberOfItems="2">
+   <ItemRef itemRef="19"/>
+   <ItemRef itemRef="36"/>
+  </Itemset>
+  <Itemset id="10" numberOfItems="2">
+   <ItemRef itemRef="17"/>
+   <ItemRef itemRef="33"/>
+  </Itemset>
+  <Itemset id="11" numberOfItems="2">
+   <ItemRef itemRef="33"/>
+   <ItemRef itemRef="46"/>
+  </Itemset>
+  <Itemset id="12" numberOfItems="2">
+   <ItemRef itemRef="17"/>
+   <ItemRef itemRef="46"/>
+  </Itemset>
+  <Itemset id="13" numberOfItems="2">
+   <ItemRef itemRef="13"/>
+   <ItemRef itemRef="49"/>
+  </Itemset>
+  <Itemset id="14" numberOfItems="2">
+   <ItemRef itemRef="37"/>
+   <ItemRef itemRef="49"/>
+  </Itemset>
+  <Itemset id="15" numberOfItems="2">
+   <ItemRef itemRef="32"/>
+   <ItemRef itemRef="49"/>
+  </Itemset>
+  <Itemset id="16" numberOfItems="3">
+   <ItemRef itemRef="13"/>
+   <ItemRef itemRef="37"/>
+   <ItemRef itemRef="49"/>
+  </Itemset>
+  <Itemset id="17" numberOfItems="3">
+   <ItemRef itemRef="13"/>
+   <ItemRef itemRef="32"/>
+   <ItemRef itemRef="49"/>
+  </Itemset>
+  <Itemset id="18" numberOfItems="3">
+   <ItemRef itemRef="32"/>
+   <ItemRef itemRef="37"/>
+   <ItemRef itemRef="49"/>
+  </Itemset>
+  <Itemset id="19" numberOfItems="2">
+   <ItemRef itemRef="25"/>
+   <ItemRef itemRef="42"/>
+  </Itemset>
+  <Itemset id="20" numberOfItems="2">
+   <ItemRef itemRef="24"/>
+   <ItemRef itemRef="25"/>
+  </Itemset>
+  <Itemset id="21" numberOfItems="2">
+   <ItemRef itemRef="24"/>
+   <ItemRef itemRef="42"/>
+  </Itemset>
+  <Itemset id="22" numberOfItems="2">
+   <ItemRef itemRef="25"/>
+   <ItemRef itemRef="41"/>
+  </Itemset>
+  <Itemset id="23" numberOfItems="2">
+   <ItemRef itemRef="41"/>
+   <ItemRef itemRef="42"/>
+  </Itemset>
+  <Itemset id="24" numberOfItems="2">
+   <ItemRef itemRef="24"/>
+   <ItemRef itemRef="41"/>
+  </Itemset>
+  <Itemset id="25" numberOfItems="3">
+   <ItemRef itemRef="25"/>
+   <ItemRef itemRef="41"/>
+   <ItemRef itemRef="42"/>
+  </Itemset>
+  <Itemset id="26" numberOfItems="3">
+   <ItemRef itemRef="24"/>
+   <ItemRef itemRef="25"/>
+   <ItemRef itemRef="41"/>
+  </Itemset>
+  <Itemset id="27" numberOfItems="3">
+   <ItemRef itemRef="24"/>
+   <ItemRef itemRef="41"/>
+   <ItemRef itemRef="42"/>
+  </Itemset>
+  <Itemset id="28" numberOfItems="3">
+   <ItemRef itemRef="24"/>
+   <ItemRef itemRef="25"/>
+   <ItemRef itemRef="42"/>
+  </Itemset>
+  <Itemset id="29" numberOfItems="2">
+   <ItemRef itemRef="12"/>
+   <ItemRef itemRef="38"/>
+  </Itemset>
+  <Itemset id="30" numberOfItems="2">
+   <ItemRef itemRef="8"/>
+   <ItemRef itemRef="38"/>
+  </Itemset>
+  <Itemset id="31" numberOfItems="2">
+   <ItemRef itemRef="8"/>
+   <ItemRef itemRef="12"/>
+  </Itemset>
+  <Itemset id="32" numberOfItems="2">
+   <ItemRef itemRef="38"/>
+   <ItemRef itemRef="46"/>
+  </Itemset>
+  <Itemset id="33" numberOfItems="2">
+   <ItemRef itemRef="12"/>
+   <ItemRef itemRef="46"/>
+  </Itemset>
+  <Itemset id="34" numberOfItems="2">
+   <ItemRef itemRef="8"/>
+   <ItemRef itemRef="46"/>
+  </Itemset>
+  <Itemset id="35" numberOfItems="3">
+   <ItemRef itemRef="8"/>
+   <ItemRef itemRef="12"/>
+   <ItemRef itemRef="38"/>
+  </Itemset>
+  <Itemset id="36" numberOfItems="3">
+   <ItemRef itemRef="12"/>
+   <ItemRef itemRef="38"/>
+   <ItemRef itemRef="46"/>
+  </Itemset>
+  <Itemset id="37" numberOfItems="3">
+   <ItemRef itemRef="8"/>
+   <ItemRef itemRef="38"/>
+   <ItemRef itemRef="46"/>
+  </Itemset>
+  <Itemset id="38" numberOfItems="3">
+   <ItemRef itemRef="8"/>
+   <ItemRef itemRef="12"/>
+   <ItemRef itemRef="46"/>
+  </Itemset>
+  <Itemset id="39" numberOfItems="2">
+   <ItemRef itemRef="16"/>
+   <ItemRef itemRef="50"/>
+  </Itemset>
+  <Itemset id="40" numberOfItems="2">
+   <ItemRef itemRef="8"/>
+   <ItemRef itemRef="50"/>
+  </Itemset>
+  <Itemset id="41" numberOfItems="2">
+   <ItemRef itemRef="41"/>
+   <ItemRef itemRef="44"/>
+  </Itemset>
+  <Itemset id="42" numberOfItems="2">
+   <ItemRef itemRef="25"/>
+   <ItemRef itemRef="44"/>
+  </Itemset>
+  <Itemset id="43" numberOfItems="2">
+   <ItemRef itemRef="42"/>
+   <ItemRef itemRef="44"/>
+  </Itemset>
+  <Itemset id="44" numberOfItems="2">
+   <ItemRef itemRef="24"/>
+   <ItemRef itemRef="44"/>
+  </Itemset>
+  <Itemset id="45" numberOfItems="3">
+   <ItemRef itemRef="25"/>
+   <ItemRef itemRef="41"/>
+   <ItemRef itemRef="44"/>
+  </Itemset>
+  <Itemset id="46" numberOfItems="3">
+   <ItemRef itemRef="41"/>
+   <ItemRef itemRef="42"/>
+   <ItemRef itemRef="44"/>
+  </Itemset>
+  <Itemset id="47" numberOfItems="3">
+   <ItemRef itemRef="25"/>
+   <ItemRef itemRef="42"/>
+   <ItemRef itemRef="44"/>
+  </Itemset>
+  <Itemset id="48" numberOfItems="3">
+   <ItemRef itemRef="24"/>
+   <ItemRef itemRef="41"/>
+   <ItemRef itemRef="44"/>
+  </Itemset>
+  <Itemset id="49" numberOfItems="3">
+   <ItemRef itemRef="24"/>
+   <ItemRef itemRef="25"/>
+   <ItemRef itemRef="44"/>
+  </Itemset>
+  <Itemset id="50" numberOfItems="3">
+   <ItemRef itemRef="24"/>
+   <ItemRef itemRef="42"/>
+   <ItemRef itemRef="44"/>
+  </Itemset>
+  <Itemset id="51" numberOfItems="4">
+   <ItemRef itemRef="25"/>
+   <ItemRef itemRef="41"/>
+   <ItemRef itemRef="42"/>
+   <ItemRef itemRef="44"/>
+  </Itemset>
+  <Itemset id="52" numberOfItems="4">
+   <ItemRef itemRef="24"/>
+   <ItemRef itemRef="25"/>
+   <ItemRef itemRef="41"/>
+   <ItemRef itemRef="44"/>
+  </Itemset>
+  <Itemset id="53" numberOfItems="4">
+   <ItemRef itemRef="24"/>
+   <ItemRef itemRef="41"/>
+   <ItemRef itemRef="42"/>
+   <ItemRef itemRef="44"/>
+  </Itemset>
+  <Itemset id="54" numberOfItems="4">
+   <ItemRef itemRef="24"/>
+   <ItemRef itemRef="25"/>
+   <ItemRef itemRef="42"/>
+   <ItemRef itemRef="44"/>
+  </Itemset>
+  <Itemset id="55" numberOfItems="2">
+   <ItemRef itemRef="18"/>
+   <ItemRef itemRef="30"/>
+  </Itemset>
+  <Itemset id="56" numberOfItems="2">
+   <ItemRef itemRef="30"/>
+   <ItemRef itemRef="48"/>
+  </Itemset>
+  <Itemset id="57" numberOfItems="2">
+   <ItemRef itemRef="14"/>
+   <ItemRef itemRef="28"/>
+  </Itemset>
+  <Itemset id="58" numberOfItems="2">
+   <ItemRef itemRef="14"/>
+   <ItemRef itemRef="29"/>
+  </Itemset>
+  <Itemset id="59" numberOfItems="2">
+   <ItemRef itemRef="20"/>
+   <ItemRef itemRef="45"/>
+  </Itemset>
+  <Itemset id="60" numberOfItems="2">
+   <ItemRef itemRef="5"/>
+   <ItemRef itemRef="34"/>
+  </Itemset>
+  <Itemset id="61" numberOfItems="1">
+   <ItemRef itemRef="32"/>
+  </Itemset>
+  <Itemset id="62" numberOfItems="1">
+   <ItemRef itemRef="37"/>
+  </Itemset>
+  <Itemset id="63" numberOfItems="1">
+   <ItemRef itemRef="13"/>
+  </Itemset>
+  <Itemset id="64" numberOfItems="1">
+   <ItemRef itemRef="47"/>
+  </Itemset>
+  <Itemset id="65" numberOfItems="1">
+   <ItemRef itemRef="1"/>
+  </Itemset>
+  <Itemset id="66" numberOfItems="1">
+   <ItemRef itemRef="3"/>
+  </Itemset>
+  <Itemset id="67" numberOfItems="1">
+   <ItemRef itemRef="19"/>
+  </Itemset>
+  <Itemset id="68" numberOfItems="1">
+   <ItemRef itemRef="36"/>
+  </Itemset>
+  <Itemset id="69" numberOfItems="1">
+   <ItemRef itemRef="4"/>
+  </Itemset>
+  <Itemset id="70" numberOfItems="1">
+   <ItemRef itemRef="46"/>
+  </Itemset>
+  <Itemset id="71" numberOfItems="1">
+   <ItemRef itemRef="17"/>
+  </Itemset>
+  <Itemset id="72" numberOfItems="1">
+   <ItemRef itemRef="33"/>
+  </Itemset>
+  <Itemset id="73" numberOfItems="1">
+   <ItemRef itemRef="24"/>
+  </Itemset>
+  <Itemset id="74" numberOfItems="1">
+   <ItemRef itemRef="42"/>
+  </Itemset>
+  <Itemset id="75" numberOfItems="1">
+   <ItemRef itemRef="25"/>
+  </Itemset>
+  <Itemset id="76" numberOfItems="1">
+   <ItemRef itemRef="41"/>
+  </Itemset>
+  <Itemset id="77" numberOfItems="1">
+   <ItemRef itemRef="8"/>
+  </Itemset>
+  <Itemset id="78" numberOfItems="1">
+   <ItemRef itemRef="12"/>
+  </Itemset>
+  <Itemset id="79" numberOfItems="1">
+   <ItemRef itemRef="38"/>
+  </Itemset>
+  <Itemset id="80" numberOfItems="1">
+   <ItemRef itemRef="16"/>
+  </Itemset>
+  <Itemset id="81" numberOfItems="1">
+   <ItemRef itemRef="48"/>
+  </Itemset>
+  <Itemset id="82" numberOfItems="1">
+   <ItemRef itemRef="18"/>
+  </Itemset>
+  <Itemset id="83" numberOfItems="1">
+   <ItemRef itemRef="29"/>
+  </Itemset>
+  <Itemset id="84" numberOfItems="1">
+   <ItemRef itemRef="28"/>
+  </Itemset>
+  <Itemset id="85" numberOfItems="1">
+   <ItemRef itemRef="2"/>
+  </Itemset>
+  <Itemset id="86" numberOfItems="1">
+   <ItemRef itemRef="10"/>
+  </Itemset>
+  <AssociationRule support="0.04" confidence="0.976" lift="10.721" antecedent="1" consequent="61"/>
+  <AssociationRule support="0.04" confidence="0.909" lift="10.823" antecedent="2" consequent="62"/>
+  <AssociationRule support="0.04" confidence="0.952" lift="12.055" antecedent="3" consequent="63"/>
+  <AssociationRule support="0.038" confidence="0.95" lift="11.176" antecedent="4" consequent="64"/>
+  <AssociationRule support="0.038" confidence="0.974" lift="11.6" antecedent="5" consequent="65"/>
+  <AssociationRule support="0.038" confidence="0.809" lift="11.229" antecedent="6" consequent="66"/>
+  <AssociationRule support="0.038" confidence="0.974" lift="11.6" antecedent="7" consequent="67"/>
+  <AssociationRule support="0.038" confidence="0.927" lift="12.358" antecedent="8" consequent="68"/>
+  <AssociationRule support="0.038" confidence="0.826" lift="10.591" antecedent="9" consequent="69"/>
+  <AssociationRule support="0.032" confidence="0.8" lift="8.511" antecedent="10" consequent="70"/>
+  <AssociationRule support="0.032" confidence="1" lift="12.346" antecedent="11" consequent="71"/>
+  <AssociationRule support="0.032" confidence="0.97" lift="12.759" antecedent="12" consequent="72"/>
+  <AssociationRule support="0.031" confidence="0.861" lift="10.251" antecedent="13" consequent="62"/>
+  <AssociationRule support="0.031" confidence="0.939" lift="11.891" antecedent="14" consequent="63"/>
+  <AssociationRule support="0.031" confidence="0.861" lift="9.463" antecedent="13" consequent="61"/>
+  <AssociationRule support="0.031" confidence="0.939" lift="11.891" antecedent="15" consequent="63"/>
+  <AssociationRule support="0.031" confidence="0.939" lift="10.323" antecedent="14" consequent="61"/>
+  <AssociationRule support="0.031" confidence="0.939" lift="11.183" antecedent="15" consequent="62"/>
+  <AssociationRule support="0.031" confidence="1" lift="10.989" antecedent="16" consequent="61"/>
+  <AssociationRule support="0.031" confidence="1" lift="11.905" antecedent="17" consequent="62"/>
+  <AssociationRule support="0.031" confidence="1" lift="12.658" antecedent="18" consequent="63"/>
+  <AssociationRule support="0.029" confidence="0.967" lift="11.789" antecedent="19" consequent="73"/>
+  <AssociationRule support="0.029" confidence="0.879" lift="12.205" antecedent="20" consequent="74"/>
+  <AssociationRule support="0.029" confidence="1" lift="15.152" antecedent="21" consequent="75"/>
+  <AssociationRule support="0.028" confidence="0.903" lift="12.545" antecedent="22" consequent="74"/>
+  <AssociationRule support="0.028" confidence="0.966" lift="14.629" antecedent="23" consequent="75"/>
+  <AssociationRule support="0.028" confidence="0.933" lift="14.141" antecedent="19" consequent="76"/>
+  <AssociationRule support="0.028" confidence="0.903" lift="11.015" antecedent="22" consequent="73"/>
+  <AssociationRule support="0.028" confidence="0.903" lift="13.685" antecedent="24" consequent="75"/>
+  <AssociationRule support="0.028" confidence="0.848" lift="12.856" antecedent="20" consequent="76"/>
+  <AssociationRule support="0.028" confidence="0.966" lift="11.775" antecedent="23" consequent="73"/>
+  <AssociationRule support="0.028" confidence="0.903" lift="12.545" antecedent="24" consequent="74"/>
+  <AssociationRule support="0.028" confidence="0.966" lift="14.629" antecedent="21" consequent="76"/>
+  <AssociationRule support="0.028" confidence="1" lift="12.195" antecedent="25" consequent="73"/>
+  <AssociationRule support="0.028" confidence="1" lift="13.889" antecedent="26" consequent="74"/>
+  <AssociationRule support="0.028" confidence="1" lift="15.152" antecedent="27" consequent="75"/>
+  <AssociationRule support="0.028" confidence="0.966" lift="14.629" antecedent="28" consequent="76"/>
+  <AssociationRule support="0.027" confidence="0.931" lift="10.011" antecedent="29" consequent="77"/>
+  <AssociationRule support="0.027" confidence="0.9" lift="13.235" antecedent="30" consequent="78"/>
+  <AssociationRule support="0.027" confidence="0.818" lift="12.587" antecedent="31" consequent="79"/>
+  <AssociationRule support="0.024" confidence="0.828" lift="8.804" antecedent="29" consequent="70"/>
+  <AssociationRule support="0.024" confidence="0.96" lift="14.118" antecedent="32" consequent="78"/>
+  <AssociationRule support="0.024" confidence="0.828" lift="12.732" antecedent="33" consequent="79"/>
+  <AssociationRule support="0.024" confidence="0.8" lift="8.511" antecedent="30" consequent="70"/>
+  <AssociationRule support="0.024" confidence="0.96" lift="10.323" antecedent="32" consequent="77"/>
+  <AssociationRule support="0.024" confidence="0.923" lift="14.201" antecedent="34" consequent="79"/>
+  <AssociationRule support="0.024" confidence="0.828" lift="8.899" antecedent="33" consequent="77"/>
+  <AssociationRule support="0.024" confidence="0.923" lift="13.575" antecedent="34" consequent="78"/>
+  <AssociationRule support="0.024" confidence="0.889" lift="9.456" antecedent="35" consequent="70"/>
+  <AssociationRule support="0.024" confidence="1" lift="10.753" antecedent="36" consequent="77"/>
+  <AssociationRule support="0.024" confidence="1" lift="14.706" antecedent="37" consequent="78"/>
+  <AssociationRule support="0.024" confidence="1" lift="15.385" antecedent="38" consequent="79"/>
+  <AssociationRule support="0.023" confidence="0.958" lift="10.305" antecedent="39" consequent="77"/>
+  <AssociationRule support="0.023" confidence="0.958" lift="13.128" antecedent="40" consequent="80"/>
+  <AssociationRule support="0.019" confidence="0.905" lift="13.709" antecedent="41" consequent="75"/>
+  <AssociationRule support="0.019" confidence="0.95" lift="14.394" antecedent="42" consequent="76"/>
+  <AssociationRule support="0.019" confidence="0.905" lift="12.566" antecedent="41" consequent="74"/>
+  <AssociationRule support="0.019" confidence="0.826" lift="12.516" antecedent="43" consequent="76"/>
+  <AssociationRule support="0.019" confidence="0.905" lift="11.034" antecedent="41" consequent="73"/>
+  <AssociationRule support="0.019" confidence="0.95" lift="14.394" antecedent="44" consequent="76"/>
+  <AssociationRule support="0.019" confidence="0.95" lift="13.194" antecedent="42" consequent="74"/>
+  <AssociationRule support="0.019" confidence="0.826" lift="12.516" antecedent="43" consequent="75"/>
+  <AssociationRule support="0.019" confidence="0.95" lift="11.585" antecedent="42" consequent="73"/>
+  <AssociationRule support="0.019" confidence="0.95" lift="14.394" antecedent="44" consequent="75"/>
+  <AssociationRule support="0.019" confidence="0.826" lift="10.074" antecedent="43" consequent="73"/>
+  <AssociationRule support="0.019" confidence="0.95" lift="13.194" antecedent="44" consequent="74"/>
+  <AssociationRule support="0.019" confidence="1" lift="13.889" antecedent="45" consequent="74"/>
+  <AssociationRule support="0.019" confidence="1" lift="15.152" antecedent="46" consequent="75"/>
+  <AssociationRule support="0.019" confidence="1" lift="15.152" antecedent="47" consequent="76"/>
+  <AssociationRule support="0.019" confidence="1" lift="12.195" antecedent="45" consequent="73"/>
+  <AssociationRule support="0.019" confidence="1" lift="15.152" antecedent="48" consequent="75"/>
+  <AssociationRule support="0.019" confidence="1" lift="15.152" antecedent="49" consequent="76"/>
+  <AssociationRule support="0.019" confidence="1" lift="12.195" antecedent="46" consequent="73"/>
+  <AssociationRule support="0.019" confidence="1" lift="13.889" antecedent="48" consequent="74"/>
+  <AssociationRule support="0.019" confidence="1" lift="15.152" antecedent="50" consequent="76"/>
+  <AssociationRule support="0.019" confidence="1" lift="12.195" antecedent="47" consequent="73"/>
+  <AssociationRule support="0.019" confidence="1" lift="13.889" antecedent="49" consequent="74"/>
+  <AssociationRule support="0.019" confidence="1" lift="15.152" antecedent="50" consequent="75"/>
+  <AssociationRule support="0.019" confidence="1" lift="12.195" antecedent="51" consequent="73"/>
+  <AssociationRule support="0.019" confidence="1" lift="13.889" antecedent="52" consequent="74"/>
+  <AssociationRule support="0.019" confidence="1" lift="15.152" antecedent="53" consequent="75"/>
+  <AssociationRule support="0.019" confidence="1" lift="15.152" antecedent="54" consequent="76"/>
+  <AssociationRule support="0.018" confidence="1" lift="13.514" antecedent="55" consequent="81"/>
+  <AssociationRule support="0.018" confidence="1" lift="19.608" antecedent="56" consequent="82"/>
+  <AssociationRule support="0.006" confidence="0.857" lift="8.403" antecedent="57" consequent="83"/>
+  <AssociationRule support="0.006" confidence="0.857" lift="9.524" antecedent="58" consequent="84"/>
+  <AssociationRule support="0.005" confidence="0.833" lift="9.804" antecedent="59" consequent="85"/>
+  <AssociationRule support="0.005" confidence="0.833" lift="9.259" antecedent="60" consequent="86"/>
+ </AssociationModel>
+</PMML>

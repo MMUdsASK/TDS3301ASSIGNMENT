@@ -1,3 +1,4 @@
+# TDS 3301 DATA MINING ASSIGNMENT 2 : binaryVector.R
 # building binary vectors
 # requires construction.R to be executed to obtain the tables
 # create database connection
@@ -10,10 +11,6 @@ options(warn=-1)
 
 # read goods table to a dataframe
 goods <- dbGetQuery(db,'select * from goods')
-# read employee table to a dataframe
-employee <- dbGetQuery(db,'select * from employee')
-# read location table to a dataframe
-location <- dbGetQuery(db,'select * from location')
 # read item table to a dataframe
 items <- dbGetQuery(db,'select * from items')
 # read receipts table to a dataframe

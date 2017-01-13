@@ -1,3 +1,5 @@
+# TDS 3301 DATA MINING ASSIGNMENT 2 : construction.R
+
 library(sqldf)
 
 # create database connection
@@ -107,6 +109,4 @@ location <- dbGetQuery(db,'select * from location')
 items <- dbGetQuery(db,'select * from items')
 # read receipts table to a dataframe
 receipts <- dbGetQuery(db,'select * from receipts')
-
-id <- cbind(rowid = as.vector(t(row)))
 
