@@ -3,7 +3,7 @@
  <Header copyright="Copyright (c) 2017 Salamanth" description="arules association rules model">
   <Extension name="user" value="Salamanth" extender="Rattle/PMML"/>
   <Application name="Rattle/PMML" version="1.4"/>
-  <Timestamp>2017-01-13 08:58:29</Timestamp>
+  <Timestamp>2017-01-13 23:13:37</Timestamp>
  </Header>
  <DataDictionary numberOfFields="2">
   <DataField name="transaction" optype="categorical" dataType="string"/>
