@@ -1,9 +1,15 @@
 #-----------------------------------
 # Dataset loading and processing
 #-----------------------------------
-
-# exploring occupancy dataset
-library(ggplot2)
+# load library
+library(ggplot2) # plotting
+library(caret) # scaling
+library(rpart) # decision tree
+library(rpart.plot) # plotting decision tree
+library(ROCR) # ROC curve
+library(arules) # discretize
+library(e1071) # bayes
+library('neuralnet') # ANN
 
 # dates are not factors
 datatraining <- read.table("datatraining.txt",header=TRUE,sep=",",stringsAsFactors = FALSE)
@@ -69,8 +75,7 @@ ggplot(datatraining, aes(x='',y=HumidityRatio)) +
 #----------------------------------------------------
 # decision tree
 #----------------------------------------------------
-library(rpart)
-library(rpart.plot)
+
 
 # factorize the class variable
 datatraining$Occupancy = as.factor(datatraining$Occupancy)
@@ -88,6 +93,21 @@ tree.pruned <- prune(dTree, cp = bestcp)
 
 prp(dTree, faclen = 0, cex = 0.8, extra = 1)
 
+#----------------------------------------------------
+# Naive Bayes
+#----------------------------------------------------
+
+datatrainingNB = datatraining
+
+# discretize the continuous values
+datatrainingNB$Temperature<- discretize(datatrainingNB$Temperature, method = "interval",4,labels=c("Low","Medium","High","Very High"))
+datatrainingNB$Humidity <- discretize(datatrainingNB$Humidity, method = "interval",4,labels=c("Low","Medium","High","Very High"))
+datatrainingNB$HumidityRatio <- discretize(datatrainingNB$HumidityRatio, method = "interval",4,labels=c("Low","Medium","High","Very High"))
+datatrainingNB$Light <- discretize(datatrainingNB$Light, method = "interval",4,labels=c("Low","Medium","High","Very High"))
+datatrainingNB$CO2 <- discretize(datatrainingNB$CO2, method = "interval",4,labels=c("Low","Medium","High","Very High"))
+
+
+bayesPred <- naiveBayes(Occupancy~ . -date, datatrainingNB)
 
 #----------------------------------------------------
 # ANN
@@ -102,9 +122,126 @@ minimums <- apply(datatraining[,2:6],2, min)
 datatrainingANN <- as.data.frame(scale(datatraining[,2:6],center = minimums, scale = maximums - minimums))
 
 # add the class variable to the ANN training
-datatrainingANN <- cbind(datatraining$Occupancy, datatrainingANN)
+datatrainingANN <- cbind(Occupancy=as.numeric(datatraining$Occupancy)-1, datatrainingANN)
 
 
+# getting the formula
+feats <- names(datatrainingANN)
+# Concatenate strings
+f <- paste(feats[2:6],collapse=' + ')
+f <- paste(feats[1], ' ~ ',f)
+
+# Convert to formula
+f <- as.formula(f)
+
+
+
+nn <- neuralnet(f,datatrainingANN,hidden=c(3,2,1), linear.output = FALSE)
+
+
+
+
+#----------------------------------------------------
+# TEST DATA PREDICTION (TREE)
+#----------------------------------------------------
+
+# load test data
+datatestTREE <- read.table("datatest.txt",header=TRUE,sep=",",stringsAsFactors = FALSE)
+
+
+# convert dates to POSIXct
+datatestTREE$date <- as.POSIXct(strptime(datatestTREE$date, "%Y-%m-%d %H:%M:%S"))
+
+# do prediction
+predT <- predict(dTree, newdata = datatestTREE, type = 'class')
+
+# get confusion matrix
+confusionMatrix(predT, datatestTREE$Occupancy)
+
+# get ROC curve
+# need to turn factors to binary values
+roc_pred <- prediction(as.numeric(predT), as.numeric(datatestTREE$Occupancy))
+plot(performance(roc_pred, measure="tpr", x.measure="fpr"), colorize=TRUE)
+
+# precision recall curve
+plot(performance(roc_pred, measure="sens", x.measure="spec"), colorize=TRUE)
+plot(performance(roc_pred, measure="prec", x.measure="rec"), colorize=TRUE)
+
+#----------------------------------------------------
+# TEST DATA PREDICTION (NAIVE BAYES)
+#----------------------------------------------------
+
+# load test data
+datatestNB <- read.table("datatest2.txt",header=TRUE,sep=",",stringsAsFactors = FALSE)
+
+# factorize the class variable
+datatestNB$Occupancy = as.factor(datatestNB$Occupancy)
+
+# discretize the continuous values
+datatestNB$Temperature<- discretize(datatestNB$Temperature, method = "interval",4,labels=c("Low","Medium","High","Very High"))
+datatestNB$Humidity <- discretize(datatestNB$Humidity, method = "interval",4,labels=c("Low","Medium","High","Very High"))
+datatestNB$HumidityRatio <- discretize(datatestNB$HumidityRatio, method = "interval",4,labels=c("Low","Medium","High","Very High"))
+datatestNB$Light <- discretize(datatestNB$Light, method = "interval",4,labels=c("Low","Medium","High","Very High"))
+datatestNB$CO2 <- discretize(datatestNB$CO2, method = "interval",4,labels=c("Low","Medium","High","Very High"))
+
+# convert dates to POSIXct
+datatestNB$date <- as.POSIXct(strptime(datatestNB$date, "%Y-%m-%d %H:%M:%S"))
+
+# do prediction
+predB <- predict(bayesPred, newdata = datatestNB[,2:6])
+
+# get confusion matrix
+confusionMatrix(predB, datatestNB$Occupancy)
+
+# get ROC curve
+# need to turn factors to binary values
+roc_pred <- prediction(as.numeric(predB), as.numeric(datatestNB$Occupancy))
+plot(performance(roc_pred, measure="tpr", x.measure="fpr"), colorize=TRUE)
+
+# precision recall curve
+plot(performance(roc_pred, measure="sens", x.measure="spec"), colorize=TRUE)
+plot(performance(roc_pred, measure="prec", x.measure="rec"), colorize=TRUE)
+
+
+#----------------------------------------------------
+# TEST DATA PREDICTION (ANN)
+#----------------------------------------------------
+
+# load test data
+datatestANN <- read.table("datatest2.txt",header=TRUE,sep=",",stringsAsFactors = FALSE)
+
+# numerize the class variable
+datatestANN$Occupancy = as.numeric(datatestANN$Occupancy)
+
+# get maximum and minimum of column values
+maximums <- apply(datatestANN[,2:6],2, max)
+minimums <- apply(datatestANN[,2:6],2, min)
+
+# begin scaling
+# Use scale() and convert the resulting matrix to a data frame
+scaled.dataANN <- as.data.frame(scale(datatestANN[,2:6],center = minimums, scale = maximums - minimums))
+
+# add the class variable to the ANN training
+datatestANN <- cbind(Occupancy=datatestANN$Occupancy, scaled.dataANN )
+
+# prediction
+predN <- compute(nn,datatestANN[,2:6])
+
+# round off results
+predN <- sapply(predN$net.result,round,digits=0)
+
+
+
+# get confusion matrix
+confusionMatrix(predN, datatestANN$Occupancy)
+
+# get ROC curve
+# need to turn factors to binary values
+roc_pred <- ROCR::prediction(predN, as.numeric(datatestANN$Occupancy))
+plot(performance(roc_pred, measure="tpr", x.measure="fpr"), colorize=TRUE)
+
+# precision recall curve
+plot(performance(roc_pred, measure="sens", x.measure="spec"), colorize=TRUE)
 
 
 
