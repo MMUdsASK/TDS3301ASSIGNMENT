@@ -1,0 +1,11 @@
+name: classifierperf
+title: ClassifierPerf
+account: mmudsask
+server: shinyapps.io
+appId: 154650
+bundleId: 699055
+url: https://mmudsask.shinyapps.io/classifierperf/
+when: 1486075498.1666
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: rules.xml

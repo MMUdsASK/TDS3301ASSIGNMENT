@@ -146,7 +146,7 @@ nn <- neuralnet(f,datatrainingANN,hidden=c(3,2,1), linear.output = FALSE)
 #----------------------------------------------------
 
 # load test data
-datatestTREE <- read.table("datatest.txt",header=TRUE,sep=",",stringsAsFactors = FALSE)
+datatestTREE <- read.table("datatest2.txt",header=TRUE,sep=",",stringsAsFactors = FALSE)
 
 
 # convert dates to POSIXct
@@ -160,12 +160,11 @@ confusionMatrix(predT, datatestTREE$Occupancy)
 
 # get ROC curve
 # need to turn factors to binary values
-roc_pred <- prediction(as.numeric(predT), as.numeric(datatestTREE$Occupancy))
-plot(performance(roc_pred, measure="tpr", x.measure="fpr"), colorize=TRUE)
+roc_predDT <- ROCR::prediction(as.numeric(predT), as.numeric(datatestTREE$Occupancy))
+plot(performance(roc_predDT, measure="tpr", x.measure="fpr"), colorize=TRUE)
 
 # precision recall curve
-plot(performance(roc_pred, measure="sens", x.measure="spec"), colorize=TRUE)
-plot(performance(roc_pred, measure="prec", x.measure="rec"), colorize=TRUE)
+plot(performance(roc_predDT, measure="sens", x.measure="spec"), colorize=TRUE)
 
 #----------------------------------------------------
 # TEST DATA PREDICTION (NAIVE BAYES)
@@ -195,12 +194,11 @@ confusionMatrix(predB, datatestNB$Occupancy)
 
 # get ROC curve
 # need to turn factors to binary values
-roc_pred <- prediction(as.numeric(predB), as.numeric(datatestNB$Occupancy))
-plot(performance(roc_pred, measure="tpr", x.measure="fpr"), colorize=TRUE)
+roc_predNB <- ROCR::prediction(as.numeric(predB), as.numeric(datatestNB$Occupancy))
+plot(performance(roc_predNB, measure="tpr", x.measure="fpr"), colorize=TRUE)
 
 # precision recall curve
-plot(performance(roc_pred, measure="sens", x.measure="spec"), colorize=TRUE)
-plot(performance(roc_pred, measure="prec", x.measure="rec"), colorize=TRUE)
+plot(performance(roc_predNB, measure="sens", x.measure="spec"), colorize=TRUE)
 
 
 #----------------------------------------------------
@@ -237,13 +235,31 @@ confusionMatrix(predN, datatestANN$Occupancy)
 
 # get ROC curve
 # need to turn factors to binary values
-roc_pred <- ROCR::prediction(predN, as.numeric(datatestANN$Occupancy))
-plot(performance(roc_pred, measure="tpr", x.measure="fpr"), colorize=TRUE)
+roc_predANN <- ROCR::prediction(predN, as.numeric(datatestANN$Occupancy))
+plot(performance(roc_predANN, measure="tpr", x.measure="fpr"), colorize=TRUE)
 
 # precision recall curve
-plot(performance(roc_pred, measure="sens", x.measure="spec"), colorize=TRUE)
+plot(performance(roc_predANN, measure="sens", x.measure="spec"), colorize=TRUE)
 
+# COMBINING THE ROC CURVES FOR MULTIPLE CLASSIFIER
+perf <- performance( roc_predDT, "tpr", "fpr" )
+perf2 <- performance(roc_predNB, "tpr", "fpr")
+perf3 <- performance(roc_predANN, "tpr", "fpr")
+plot( perf, col = 'red')
+plot(perf2, add = TRUE, col = 'blue')
+plot(perf3, add = TRUE, col = 'green')
+legend(0.6,0.6, legend=c("Decision Tree", "Naive Bayes", "ANN"),
+       col=c("red", "blue", "green"), lty=1, cex=0.8)
 
+# For sens/spec curve
+perf4 <- performance( roc_predDT, "sens", "spec" )
+perf5 <- performance(roc_predNB, "sens", "spec")
+perf6 <- performance(roc_predANN, "sens", "spec")
+plot( perf4, col = 'red')
+plot(perf5, add = TRUE, col = 'blue')
+plot(perf6, add = TRUE, col = 'green')
+legend(0.6,0.6, legend=c("Decision Tree", "Naive Bayes", "ANN"),
+       col=c("red", "blue", "green"), lty=1, cex=0.8)
 
-
-
+save(perf,perf2,perf3,perf4,perf5,perf6,file = 'perf.RO')
+load('perf.RO')
